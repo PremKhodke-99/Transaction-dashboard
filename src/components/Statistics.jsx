@@ -16,10 +16,10 @@ const Statistics = ({ month }) => {
   return (
     <div className='mb-10 w-50'>
       <h3 className='text-[20px]'>Statistics - <strong>{month}</strong><span className='text-[10px] align-top'>(selected month from the dropdown)</span></h3>
-      <div className='h-[150px] w-60 bg-yellow-200 rounded-xl p-3 border-none leading-8'>
-        <p>Total Sale Amount: {statistics?.totalSaleAmount}</p>
-        <p>Total Sold Items: {statistics?.totalSoldItems}</p>
-        <p>Total Not Sold Items: {statistics?.totalNotSoldItems}</p>
+      <div className='h-auto w-60 bg-yellow-200 rounded-xl p-3 border-none leading-8'>
+        <p>Total sale : {statistics?.totalSaleAmount}</p>
+        <p>Total sold items : {statistics?.totalSoldItems}</p>
+        <p>Total not sold items : {statistics?.totalNotSoldItems}</p>
       </div>
     </div>
   )
