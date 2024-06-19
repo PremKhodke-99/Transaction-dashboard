@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { getTransactions } from '../services/api';
 
-const Table = ({ month }) => {
-    const [transactions, setTransactions] = useState([]);
+const Table = ({ month, initData }) => {
+    const [transactions, setTransactions] = useState(initData);
     const [search, setSearch] = useState("");
     const [page, setPage] = useState(1);
     const perPage = 10;
