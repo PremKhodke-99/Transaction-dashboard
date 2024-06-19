@@ -18,24 +18,28 @@ const initialize = async (req, res) => {
 }
 
 const transactions = async (req, res) => {
-    const { month, search, page = 1, perPage = 10 } = req.query;
+    const { month = 'select', search, page = 1, perPage = 10 } = req.query;
 
     const regex = new RegExp(search, 'i');
     const monthNumber = new Date(Date.parse(month + " 1, 2021")).getMonth() + 1;
 
-    const query = {
+    const query = (month === 'select') ? {} : {
         $expr: { $eq: [{ $month: "$dateOfSale" }, monthNumber] },
         $or: [
             { title: { $regex: regex } },
             { description: { $regex: regex } },
         ]
     };
-    // console.log(regex, monthNumber, query);
+
+    console.log(regex, monthNumber, query);
 
     try {
         const transactions = await Transaction
-        .find(query)
-        .skip((page - 1) * perPage).limit(perPage);
+            .find(query)
+            .skip((page - 1) * perPage)
+            .limit(Number(perPage))
+
+
         const count = await Transaction.countDocuments(query);
         console.log(transactions, count);
 
