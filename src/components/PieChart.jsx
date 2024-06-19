@@ -43,7 +43,7 @@ const PieChart = ({ month }) => {
     ],
   };
 
-  return <div className='w-1/3 h-1/3'>
+  return <div className='w-[20rem] h-[20rem]'>
     <Pie data={data} />
   </div>;
 }
