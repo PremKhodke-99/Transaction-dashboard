@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const URL = `http://localhost:3000/api`;
+const URL = `https://transaction-dashboard-ords.onrender.com/api`;
+
+export const initDatabase = () => axios.get(`${URL}/initialize`);
 
 export const getTransactions = (params) => axios.get(`${URL}/transactions`, { params });
 

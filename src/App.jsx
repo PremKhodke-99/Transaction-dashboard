@@ -3,7 +3,7 @@ import Table from './components/Table'
 import Statistics from './components/Statistics'
 import BarChart from './components/BarChart'
 import PieChart from './components/PieChart'
-import { getCombinedData } from './services/api'
+import { getCombinedData, initDatabase } from './services/api'
 
 function App() {
   const [month, setMonth] = useState('select');
@@ -11,6 +11,7 @@ function App() {
   const [initData, setInitData] = useState([]);
 
   useEffect(() => {
+    initDatabase();
     const getCombined = async () => {
       const { data } = await getCombinedData({month});
       setInitData(data.transactions);
